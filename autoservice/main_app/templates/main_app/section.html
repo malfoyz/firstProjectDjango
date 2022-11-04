@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>AutoService</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main_app/css/services.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__logo">
+                        <img src="{% static 'main_app/img/image_1.png' %}" alt="image">
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="menu">
+                            <li><a href="#/">О нас</a></li>
+                            <li><a href="#/">Услуги</a></li>
+                            <li><a href="#/">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header__phone">
+                        <img src="{% static 'main_app/img/phone.png' %}" alt="">
+                        <a href="">+7 (999) 999-99-99</a>
+                    </div>
+                    <div class="header__btn">
+                        <a href="#" class="menu__btn">Отправить заявку</a>
+                    </div>
+                    <div class="header__burger">
+                        <a href="#"><img src="{% static 'main_app/img/burger.svg' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="header__mobile">
+                    <div class="header__row-mobile">
+                        <nav class="mobile__menu">
+                            <ul class="menu-mobile">
+                                <li><a href="#/">О нас</a></li>
+                                <li><a href="#/">Услуги</a></li>
+                                <li><a href="#/">Контакты</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__burger-mobile">
+                            <a href="#"><img src="{% static 'main_app/img/burger.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="service">
+                <div class="container">
+                    <div class="service__back">
+                        <a href="{% url 'main_app:index' %}"><img class="back__img" src="{% static 'main_app/img/Arrow_back.svg' %}" alt=""></a>
+                        <a class="back__label" href="{% url 'main_app:index' %}">Назад</a>
+                    </div>
+                    <div class="service__title">{{ section.title }}</div>
+                    <div class="service__row">
+                        {% for service in section.services.all %}
+                        <div class="service__column">
+                            <div class="service__item">
+                                <img class="service__img" src="{{ service.image.url }}" alt="">
+                                <div class="service__label">{{ service.title }}</div>
+                                <div class="service__text">{{ service.description }}</div>
+                                <div class="service__prime">от <span>{{ service.price }} ₽</span></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="footer__row">
+                    <div class="footer__logo">
+                        <img src="{% static 'main_app/img/image_1.png' %}" alt="">
+                        <a href="#">Оставить заявку</a>
+                    </div>
+                    <div class="footer__menu">
+                        <a class="footer__href" href="#">О нас</a>
+                        <a class="footer__href" href="#">Услуги</a>
+                        <a class="footer__href" href="#">Контакты</a>
+                    </div>
+                    <div class="footer__info">
+                        <div class="footer__item">
+                            <img class="footer__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                            <p class="footer__label">Адрес_1</p>
+                        </div>
+                        <div class="footer__item">
+                            <img class="footer__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                            <p class="footer__label">Адрес_2</p>
+                        </div>
+                        <div class="footer__item">
+                            <img class="footer__img" src="{% static 'main_app/img/phone_2.svg' %}" alt="">
+                            <p class="footer__label">+7 (999) 999-99-99</p>
+                        </div>
+                    </div>
+                    <div class="footer__btn">
+                        <a href="#">Оставить заявку</a>
+                        <div class="footer__icons">
+                            <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                            <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                            <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

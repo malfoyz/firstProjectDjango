@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
@@ -18,6 +19,9 @@ class Section(models.Model):
     class Meta:
         verbose_name = _('Раздел')
         verbose_name_plural = _('Разделы')
+
+    def get_absolute_url(self) -> str:
+        return reverse('autoservice:section', args=(self.pk, ))
     
     def __str__(self) -> str:
         return self.title
@@ -49,8 +53,8 @@ class Service(models.Model):
     )
 
     class Meta:
-        verbose_name = _('Раздел')
-        verbose_name_plural = _('Разделы')
+        verbose_name = _('Услуга')
+        verbose_name_plural = _('Услуги')
 
     def __str__(self) -> str:
         return self.title

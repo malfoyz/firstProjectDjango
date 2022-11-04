@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>AutoService</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main_app/css/main.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__logo">
+                        <img src="{% static 'main_app/img/image_1.png' %}" alt="image">
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="menu">
+                            <li><a href="#/">О нас</a></li>
+                            <li><a href="#/">Услуги</a></li>
+                            <li><a href="#/">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header__phone">
+                        <img src="{% static 'main_app/img/phone.png' %}" alt="">
+                        <a href="">+7 (999) 999-99-99</a>
+                    </div>
+                    <div class="header__btn">
+                        <a href="#" class="menu__btn">Отправить заявку</a>
+                    </div>
+                    <div class="header__burger">
+                        <a href="#"><img src="{% static 'main_app/img/burger.svg' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="header__mobile">
+                    <div class="header__row-mobile">
+                        <nav class="mobile__menu">
+                            <ul class="menu-mobile">
+                                <li><a href="#/">О нас</a></li>
+                                <li><a href="#/">Услуги</a></li>
+                                <li><a href="#/">Контакты</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__burger-mobile">
+                            <a href="#"><img src="{% static 'main_app/img/burger.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="main">
+                <div class="container">
+                    <div class="main__title">
+                        Автосервис в <span>Красноярске</span>
+                    </div>
+                    <div class="main__carusel">
+                        <img src="{% static 'main_app/img/image_2.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <div class="bg"></div>
+                <div class="block__content">
+                    <div class="container">
+                        <div class="about__title title">
+                            О нас
+                        </div>
+                        <div class="about__galery">
+                            <div class="galery__row">
+                                <div class="galery__item">
+                                    <img src="{% static 'main_app/img/image_2.png' %}" alt="">
+                                </div>
+                                <div class="galery__item">
+                                    <img src="{% static 'main_app/img/image_2.png' %}" alt="">
+                                </div>
+                                <div class="galery__item">
+                                    <img src="{% static 'main_app/img/image_2.png' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about__text">Автосервис в центре города, с удобной транспортной развязкой, в котором
+                            оказывают услуги по ремонту любой сложности! Компьютерная диагностика неисправностей,
+                            сезонное
+                            хранение шин, сварка аргонном и многое другое. Автосервис в центре города, с удобной
+                            транспортной развязкой, в котором
+                            оказывают услуги по ремонту любой сложности! Компьютерная диагностика неисправностей,
+                            сезонное
+                            хранение шин, сварка аргонном и многое другое. </div>
+                    </div>
+                </div>
+            </div>
+            <div class="services">
+                <div class="container">
+                    <div class="services__title title">
+                        Услуги
+                    </div>
+                    <div class="services__sections">
+                        <div class="sections__row">
+                            {% for section in sections %}
+                            <div class="section__column">
+                                <div class="section__item">
+                                    <div class="section__label">
+                                        {{ section.title }}
+                                    </div>
+                                    <div class="section__text">{{ section.description }}</div>
+                                    <div class="section__btn">
+                                        <a href="{{ section.get_absolute_url }}" class="section_btn">Подробнее</a>
+                                        <a href="{{ section.get_absolute_url }}"><img src="{% static 'main_app/img/arrow.png' %}" class="section__arrow"
+                                                alt="image"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="bg"></div>
+                <div class="block__content">
+                    <div class="container">
+                        <div class="form__title title">Оставить заявку</div>
+                        <div class="form__row">
+                            <div class="form__fields">
+                                <div class="field__icon">
+                                    <img class="field__img" src="{% static 'main_app/img/name.svg' %}" alt="">
+                                    <input type="text" class="field__input" placeholder="Ваше имя">
+                                </div>
+                                <div class="field__icon">
+                                    <img class="field__img" src="{% static 'main_app/img/phone.svg' %}" alt="">
+                                    <input type="phone" class="field__input" placeholder="Номер телефона">
+                                </div>
+                                <div class="field__icon">
+                                    <img class="field__img" src="{% static 'main_app/img/email.svg' %}" alt="">
+                                    <input type="email" class="field__input" placeholder="Электронная почта">
+                                </div>
+                                <div class="fields__place"></div>
+                                <a href="#" class="form__btn">Оставить заявку</a>
+                            </div>
+                            <div class="form__img">
+                                <img src="{% static 'main_app/img/form.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contacts">
+                <div class="container">
+                    <div class="contacts__row">
+                        <div class="contacts__info">
+                            <div class="contacts__title title">
+                                Контакты
+                            </div>
+                            <div class="contacts__item">
+                                <img class="contacts__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                                <p class="contacts__label">Адрес_1</p>
+                            </div>
+                            <div class="contacts__item">
+                                <img class="contacts__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                                <p class="contacts__label">Адрес_2</p>
+                            </div>
+                            <div class="contacts__item">
+                                <img class="contacts__img" src="{% static 'main_app/img/phone_2.svg' %}" alt="">
+                                <p class="contacts__label">+7 (999) 999-99-99</p>
+                            </div>
+                            <div class="contacts__item">
+                                <img class="contacts__img" src="{% static 'main_app/img/time.svg' %}" alt="">
+                                <p class="contacts__label">Работаем без выходных с 10 до 22</p>
+                            </div>
+                        </div>
+                        <div class="contacts__map">
+                            <img src="{% static 'main_app/img/form.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    <div class="footer__row">
+                        <div class="footer__logo">
+                            <img src="{% static 'main_app/img/image_1.png' %}" alt="">
+                            <a href="#">Оставить заявку</a>
+                        </div>
+                        <div class="footer__menu">
+                            <a class="footer__href" href="#">О нас</a>
+                            <a class="footer__href" href="#">Услуги</a>
+                            <a class="footer__href" href="#">Контакты</a>
+                        </div>
+                        <div class="footer__info">
+                            <div class="footer__item">
+                                <img class="footer__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                                <p class="footer__label">Адрес_1</p>
+                            </div>
+                            <div class="footer__item">
+                                <img class="footer__img" src="{% static 'main_app/img/addr.svg' %}" alt="">
+                                <p class="footer__label">Адрес_2</p>
+                            </div>
+                            <div class="footer__item">
+                                <img class="footer__img" src="{% static 'main_app/img/phone_2.svg' %}" alt="">
+                                <p class="footer__label">+7 (999) 999-99-99</p>
+                            </div>
+                        </div>
+                        <div class="footer__btn">
+                            <a href="#">Оставить заявку</a>
+                            <div class="footer__icons">
+                                <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                                <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                                <img src="{% static 'main_app/img/footer.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
