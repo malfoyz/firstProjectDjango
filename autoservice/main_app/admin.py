@@ -4,3 +4,4 @@ from . import models
 
 admin.site.register(models.Section)
 admin.site.register(models.Service)
+admin.site.register(models.Application)

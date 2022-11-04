@@ -8,10 +8,9 @@ from django.shortcuts import (
     get_object_or_404,
 )
 
-from .models import (
-    Section,
-    Service,
-)
+from .models import Section
+from .forms import ApplicationForm
+
 
 def index(request: HttpRequest) -> HTTPResponse:
     """Обработчик главной страницы"""
@@ -19,6 +18,13 @@ def index(request: HttpRequest) -> HTTPResponse:
     context = {
         'sections': Section.objects.all(),
     }
+
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            context['errors'] = form.errors
 
     return render(
         request=request,

@@ -140,7 +140,11 @@
                                     <img class="field__img" src="{% static 'main_app/img/email.svg' %}" alt="">
                                     <input type="email" class="field__input" placeholder="Электронная почта">
                                 </div>
-                                <div class="fields__place"></div>
+                                <div class="fields__place">
+                                    {% if errors %}
+                                        <span style="color: red;">{{ errors }}</span>
+                                    {% endif %}
+                                </div>
                                 <a href="#" class="form__btn">Оставить заявку</a>
                             </div>
                             <div class="form__img">

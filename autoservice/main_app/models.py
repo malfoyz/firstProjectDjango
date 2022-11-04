@@ -1,8 +1,8 @@
-from tabnanny import verbose
-from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from .validators import validate_phone
 
 
 class Section(models.Model):
@@ -58,3 +58,27 @@ class Service(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Application(models.Model):
+    """Модель заявки"""
+
+    name = models.CharField(
+        max_length=64,
+        verbose_name=_('Имя клиента'),
+    )
+    phone = models.CharField(
+        max_length=50,
+        verbose_name=_('Телефон'),
+        validators=(validate_phone, )
+    )
+    email = models.EmailField(
+        verbose_name=_('Почта'),
+    )
+
+    class Meta:
+        verbose_name = _('Заявка')
+        verbose_name_plural = _('Заявки')
+
+    def __str__(self) -> str:
+        return f'{self.name} - {self.phone}'
